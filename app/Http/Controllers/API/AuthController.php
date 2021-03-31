@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
-use Validator;
+use Validator, Exception;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +21,8 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = Auth::user();
+            $user->deviceToken = $request->deviceToken;
+            $user->save();
             return response()->json(['result' => true, 'data' => $user], 200);
         } else {
             return response()->json(['result' => false, 'message'  => 'Unauthorised'], 401);
@@ -33,7 +35,7 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'password_confirmation' => 'required|same:password',
+            'deviceToken' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -51,26 +53,73 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
-        
     }
 
     public function updateProfile(Request $request)
     {
-        
+        if ($user = User::where('id', $request->id)->first()) {
+            try {
+                foreach ($request->except('id') as $key => $value) {
+                    $user->$key = $value;
+                }
+                $user->save();
+                return response()->json(['result' => true, 'data' => $user], 200);
+            } catch (Exception $e) {
+                return response()->json(['result' => false, 'message' => $e->getMessage()], 500);
+            }
+        } else {
+            return response()->json(['result' => false, 'message' => 'No user'], 400);
+        }
     }
 
     public function facebookLogin(Request $request)
     {
-        
+        $data = $request->all();
+
+        if ($user = User::where('fbID', $request->fbID)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+        if ($user = User::where('email', $request->email)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+
+        $user = User::create($data);
+        return response()->json(['result' => true, 'data' => $user], 200);
     }
 
     public function googleLogin(Request $request)
     {
-        
+        $data = $request->all();
+
+        if ($user = User::where('googleID', $request->googleID)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+        if ($user = User::where('email', $request->email)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+
+        $user = User::create($data);
+        return response()->json(['result' => true, 'data' => $user], 200);
     }
 
     public function appleLogin(Request $request)
     {
-        
+        $data = $request->all();
+
+        if ($user = User::where('appleID', $request->appleID)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+        if ($user = User::where('email', $request->email)->first()) {
+            $user->update($data);
+            return response()->json(['result' => true, 'data' => $user], 200);
+        }
+
+        $user = User::create($data);
+        return response()->json(['result' => true, 'data' => $user], 200);
     }
 }

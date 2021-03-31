@@ -27,10 +27,11 @@ Route::post('follow_pray', 'API\APIController@followPray');
 Route::post('get_pray', 'API\APIController@getPray');
 Route::post('invite_friend', 'API\APIController@inviteFriend');
 Route::post('invite_pray', 'API\APIController@invitePray');
-Route::post('get_friend', 'API\APIController@getFriend');
+Route::post('get_invite', 'API\APIController@getInvite');
 Route::post('get_meditate', 'API\APIController@getMeditate');
 Route::post('get_background', 'API\APIController@getBackground');
 Route::post('send_notification', 'API\APIController@sendNotification');
+Route::post('test', 'API\APIController@test');
 
  
 

@@ -15,9 +15,10 @@ class CreatePraysTable extends Migration
     {
         Schema::create('prays', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id');
             $table->string('title')->nullable();
             $table->string('description')->nullable();
+            $table->integer('religion_id')->nullable();
             $table->timestamps();
         });
     }

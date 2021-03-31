@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('deviceToken')->nullable();
             $table->string('fbID')->nullable();
             $table->string('googleID')->nullable();
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('bibleVersionCode')->nullable();
             $table->string('bibleVersionName')->nullable();
             $table->integer('religionID')->nullable();
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
