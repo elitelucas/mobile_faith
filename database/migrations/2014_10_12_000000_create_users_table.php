@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('fbID')->nullable();
             $table->string('googleID')->nullable();
             $table->string('appleID')->nullable();
-            $table->string('prayTime')->nullable();  
+            $table->string('prayTime')->nullable();
             $table->boolean('enablePush')->default(1);
             $table->boolean('enableEmail')->default(1);
             $table->string('bibleLanguageCode')->default('ENG');
@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('bibleVersionCode')->nullable();
             $table->string('bibleVersionName')->nullable();
             $table->integer('religionID')->nullable();
+            $table->boolean('paid')->default(0);
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();

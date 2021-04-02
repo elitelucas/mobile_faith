@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Background extends Model
 {
     use HasFactory;
+    protected $appends = [
+        'full_path',
+    ];
+    public function getFullPathAttribute()
+    {
+        return asset($this->path);
+    }
 }

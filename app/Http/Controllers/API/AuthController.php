@@ -23,24 +23,16 @@ class AuthController extends Controller
             $user = Auth::user();
             $user->deviceToken = $request->deviceToken;
             $user->save();
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         } else {
-            return response()->json(['result' => false, 'message'  => 'Unauthorised'], 401);
+            return response()->json(['result' => false, 'message'  => 'Email or password is incorrect']);
         }
     }
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'deviceToken' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['result' => false, 'message' => $validator->errors()], 400);
-        }
+        if (User::where('email', $request->email)->first())
+            return response()->json(['result' => false, 'message' =>  'Email already exists']);
 
         $data = $request->all();
 
@@ -48,7 +40,7 @@ class AuthController extends Controller
 
         $user = User::create($data);
 
-        return response()->json(['result' => true, 'data' => $user], 200);
+        return response()->json(['result' => true, 'data' => $user]);
     }
 
     public function resetPassword(Request $request)
@@ -63,12 +55,12 @@ class AuthController extends Controller
                     $user->$key = $value;
                 }
                 $user->save();
-                return response()->json(['result' => true, 'data' => $user], 200);
+                return response()->json(['result' => true, 'data' => $user]);
             } catch (Exception $e) {
-                return response()->json(['result' => false, 'message' => $e->getMessage()], 500);
+                return response()->json(['result' => false, 'message' => $e->getMessage()]);
             }
         } else {
-            return response()->json(['result' => false, 'message' => 'No user'], 400);
+            return response()->json(['result' => false, 'message' => 'No user']);
         }
     }
 
@@ -78,15 +70,15 @@ class AuthController extends Controller
 
         if ($user = User::where('fbID', $request->fbID)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
         if ($user = User::where('email', $request->email)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
 
         $user = User::create($data);
-        return response()->json(['result' => true, 'data' => $user], 200);
+        return response()->json(['result' => true, 'data' => $user]);
     }
 
     public function googleLogin(Request $request)
@@ -95,15 +87,15 @@ class AuthController extends Controller
 
         if ($user = User::where('googleID', $request->googleID)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
         if ($user = User::where('email', $request->email)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
 
         $user = User::create($data);
-        return response()->json(['result' => true, 'data' => $user], 200);
+        return response()->json(['result' => true, 'data' => $user]);
     }
 
     public function appleLogin(Request $request)
@@ -112,14 +104,14 @@ class AuthController extends Controller
 
         if ($user = User::where('appleID', $request->appleID)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
         if ($user = User::where('email', $request->email)->first()) {
             $user->update($data);
-            return response()->json(['result' => true, 'data' => $user], 200);
+            return response()->json(['result' => true, 'data' => $user]);
         }
 
         $user = User::create($data);
-        return response()->json(['result' => true, 'data' => $user], 200);
+        return response()->json(['result' => true, 'data' => $user]);
     }
 }

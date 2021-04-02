@@ -17,7 +17,9 @@ class CreateInvitesTable extends Migration
             $table->id();
             $table->integer('sender_id')->nullable();
             $table->integer('receiver_id')->nullable();
+            $table->integer('invitor_id')->nullable();
             $table->string('pray_time')->nullable();
+            $table->enum('state', ['new', 'active', 'decline'])->default('new');
             $table->timestamps();
         });
     }

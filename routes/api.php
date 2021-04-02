@@ -31,6 +31,12 @@ Route::post('get_invite', 'API\APIController@getInvite');
 Route::post('get_meditate', 'API\APIController@getMeditate');
 Route::post('get_background', 'API\APIController@getBackground');
 Route::post('send_notification', 'API\APIController@sendNotification');
+Route::post('add_favorite_verse', 'API\APIController@addFavoriteVerse');
+Route::post('delete_favorite_verse', 'API\APIController@deleteFavoriteVerse');
+Route::post('get_favorite_verse', 'API\APIController@getFavoriteVerse');
+Route::post('make_payment', 'API\APIController@makePayment');
+Route::post('get_one_invite', 'API\APIController@getOneInvite');
+Route::post('update_invite', 'API\APIController@updateInvite');
 Route::post('test', 'API\APIController@test');
 
  

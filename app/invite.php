@@ -14,6 +14,13 @@ class Invite extends Model
      * @var array
      */
     protected $fillable = [
-        'sender_id', 'receiver_id', 'pray_time'
+        'sender_id', 'receiver_id', 'invitor_id', 'pray_time','state'
     ];
+
+    protected $casts = [
+        'sender_id' => 'integer',
+        'receiver_id' => 'integer',
+        'invitor_id' => 'integer',
+    ];
+
 }
