@@ -12,7 +12,9 @@ class Meditate extends Model
     protected $appends = [
         'image_full_path', 'audio_full_path'
     ];
-
+    protected $casts = [
+        'locked' => 'boolean',
+    ];
     public function getImageFullPathAttribute()
     {
         return asset($this->image_path);

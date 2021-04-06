@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'deviceToken', 'fbID', 'googleID', 'appleID',
+        'name', 'email', 'password', 'deviceToken', 'fbID', 'googleID', 'appleID', 'damID', 'lastPray',
     ];
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'is_admin'
+        'password', 'remember_token', 'is_admin',
     ];
 
     /**
@@ -38,6 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'enablePush' => 'boolean',
         'enableEmail' => 'boolean',
+        'paid' => 'boolean',
     ];
 
     /*Login with Socialite*/

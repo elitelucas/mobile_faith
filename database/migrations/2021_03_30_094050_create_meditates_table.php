@@ -19,6 +19,7 @@ class CreateMeditatesTable extends Migration
             $table->string('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('audio_path')->nullable();
+            $table->boolean('locked')->default(false);
             $table->timestamps();
         });
     }

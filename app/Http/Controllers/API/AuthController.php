@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\User;
 use Validator, Exception;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class AuthController extends Controller
             $user = Auth::user();
             $user->deviceToken = $request->deviceToken;
             $user->save();
+
             return response()->json(['result' => true, 'data' => $user]);
         } else {
             return response()->json(['result' => false, 'message'  => 'Email or password is incorrect']);

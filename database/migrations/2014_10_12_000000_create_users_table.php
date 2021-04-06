@@ -30,8 +30,10 @@ class CreateUsersTable extends Migration
             $table->string('bibleLanguageName')->default('English');
             $table->string('bibleVersionCode')->nullable();
             $table->string('bibleVersionName')->nullable();
+            $table->string('damID')->nullable();
             $table->integer('religionID')->nullable();
-            $table->boolean('paid')->default(0);
+            $table->boolean('paid')->default(false);
+            $table->dateTime('lastPray')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();

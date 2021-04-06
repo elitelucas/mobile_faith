@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Meditate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,15 +32,15 @@ class DatabaseSeeder extends Seeder
             'path' => 'uploads/background/4.jpg',              
         ]);
 
-        DB::table('meditates')->insert([
+        Meditate::create([
             'title' => 'this is image',              
             'description' => 'look at image to think deeply',              
             'image_path' => 'uploads/meditate/1.jpg',              
         ]);
-        DB::table('meditates')->insert([
+        Meditate::create([
             'title' => 'this is music',              
             'description' => 'listen music to think deeply',              
-            'audio_path' => 'uploads/meditate/1.mp3',              
-        ]);
+            'audio_path' => 'uploads/meditate/1.mp3',                
+        ]);    
     }
 }

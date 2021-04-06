@@ -21,7 +21,13 @@ class APIController extends Controller
         try {
             $data = $request->all();
             $pray = Pray::create($data);
-            return response()->json(['result' => true, 'data' => $pray]);
+
+            $user = User::find($request->user_id);
+            $user->update([
+                'lastPray' => date('Y-m-d H:i:s')
+            ]);
+
+            return response()->json(['result' => true, 'data' => $user]);
         } catch (Exception $e) {
             return response()->json(['result' => false, 'message' => $e->getMessage()]);
         }
@@ -50,9 +56,9 @@ class APIController extends Controller
             $friends = array_merge($friends, Invite::where('sender_id', $request->user_id)->pluck('receiver_id')->toArray());
             $friends = array_merge($friends, Invite::where('receiver_id', $request->user_id)->pluck('sender_id')->toArray());
 
-            $records = Pray::wherein('user_id', $friends)->get();
+            $records = Pray::wherein('user_id', $friends)->orderby('created_at', 'DESC')->get();
         } else if ($request->type == 'me') {
-            $records = Pray::where('user_id', $request->user_id)->get();
+            $records = Pray::where('user_id', $request->user_id)->orderby('created_at', 'DESC')->get();
         }
         return response()->json(['result' => true, 'data' => $records]);
     }
