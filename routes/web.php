@@ -13,27 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('pages-login', 'SkoteController@index');
-Route::get('pages-login-2', 'SkoteController@index');
-Route::get('pages-register', 'SkoteController@index');
-Route::get('pages-register-2', 'SkoteController@index');
-Route::get('pages-recoverpw', 'SkoteController@index');
-Route::get('pages-recoverpw-2', 'SkoteController@index');
-Route::get('pages-lock-screen', 'SkoteController@index');
-Route::get('pages-lock-screen-2', 'SkoteController@index');
-Route::get('pages-404', 'SkoteController@index');
-Route::get('pages-500', 'SkoteController@index');
-Route::get('pages-maintenance', 'SkoteController@index');
-Route::get('pages-comingsoon', 'SkoteController@index');
-
-Route::post('keep-live', 'SkoteController@live');
-
-Route::get('index/{locale}', 'LocaleController@lang');
-
-Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
-
-Route::post('/contacts-profile', 'UserController@updateProfile');
+Route::view('/terms', 'faith.terms');
+Route::view('/policy', 'faith.policy');
 
 //Add routes before this line only
 Route::get('/{any}', 'HomeController@index');    
