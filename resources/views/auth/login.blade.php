@@ -48,7 +48,7 @@
                                             <label for="username">Email</label>
                                             <input name="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" @if (old('email')) value="{{ old('email') }}" @else
-                                            value="admin@themesbrand.com" @endif id="username"
+                                            value="" @endif id="username"
                                             placeholder="Enter username" autocomplete="email" autofocus>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                                             <label for="userpassword">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control  @error('password') is-invalid @enderror"
-                                                id="userpassword" value="123456" placeholder="Enter password">
+                                                id="userpassword" value="" placeholder="Enter password">
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                                             <button class="btn btn-primary btn-block waves-effect waves-light"
                                                 type="submit">Log In</button>
                                         </div>
-
+{{-- 
                                         <div class="mt-4 text-center">
                                             <h5 class="font-size-14 mb-3">Sign in with</h5>
 
@@ -106,7 +106,7 @@
                                         <div class="mt-4 text-center">
                                             <a href="password/reset" class="text-muted"><i class="mdi mdi-lock mr-1"></i>
                                                 Forgot your password?</a>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                 </div>
                             </div>
@@ -114,8 +114,8 @@
                         </div>
 
                         <div class="mt-5 text-center">
-                            <p>Don't have an account ? <a href="{{ url('register') }}"
-                                    class="font-weight-medium text-primary"> Signup now </a> </p>
+                            {{-- <p>Don't have an account ? <a href="{{ url('register') }}"
+                                    class="font-weight-medium text-primary"> Signup now </a> </p> --}}
                             <p>© <script>
                                     document.write(new Date().getFullYear())
 

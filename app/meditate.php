@@ -15,6 +15,11 @@ class Meditate extends Model
     protected $casts = [
         'locked' => 'boolean',
     ];
+
+    protected $fillable = [
+        'title', 'description', 'image_path', 'audio_path', 'type', 'locked'
+    ];
+
     public function getImageFullPathAttribute()
     {
         return asset($this->image_path);

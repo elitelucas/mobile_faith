@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Meditate;
 use Str, Input, File;
 
-class UserController extends Controller
+class MeditateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $records = User::where('is_admin', 0)->get();
-        return view('faith.user.index', ['records' => $records]);
+        $type = $request->type;
+        $records = Meditate::where('type', $type)->get();
+        return view('faith.meditate.index', ['records' => $records, 'type' => $type]);
     }
 
     /**
@@ -26,7 +27,8 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('faith.user.create');
+        $type = $request->type;
+        return view('faith.meditate.create', ['type' => $type]);
     }
 
     /**
@@ -37,12 +39,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $type = $request->type;
 
-        $data = $request->all();   
+        $data = $request->all();
 
-        User::create($data);
+        $file = $request->file('file');
+        $destinationPath = 'uploads/meditate/';
+        $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+        $file->move($destinationPath, $fileName);
 
-        return redirect(url("/user"));
+        if ($type == 'image')
+            $data['image_path'] = $destinationPath . $fileName;
+        if ($type == 'audio')
+            $data['audio_path'] = $destinationPath . $fileName;
+
+        Meditate::create($data);
+
+        return redirect(url("/meditate?type=$type"));
     }
 
     /**
@@ -64,8 +77,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $record = User::find($id);
-        return view('faith.user.edit', ['record' => $record]);
+        $record = Meditate::find($id);
+        return view('faith.meditate.edit', ['record' => $record]);
     }
 
     /**
@@ -78,11 +91,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $data['locked'] = $request->has('locked');       
 
-        $record = User::find($id);
+        $record = Meditate::find($id);
         $record->update($data);
 
-        return redirect(url("/user"));
+        return redirect(url("/meditate?type={$record->type}"));
     }
 
     /**
@@ -93,9 +107,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $obj = User::find($id);
+        $obj = Meditate::find($id);
+        File::delete(public_path($obj->image_path));
+        File::delete(public_path($obj->audio_path));
         $obj->delete();
 
-        return redirect(url("/user"));
+        return redirect(url("/meditate?type={$obj->type}"));
     }
 }

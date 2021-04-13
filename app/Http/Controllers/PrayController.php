@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Pray;
 use Str, Input, File;
 
-class UserController extends Controller
+class PrayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $records = User::where('is_admin', 0)->get();
-        return view('faith.user.index', ['records' => $records]);
+        $records = Pray::get();
+        return view('faith.pray.index', ['records' => $records]);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('faith.user.create');
+        return view('faith.pray.create');
     }
 
     /**
@@ -38,11 +38,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->all();   
+        $data = $request->all();
 
-        User::create($data);
+        Pray::create($data);
 
-        return redirect(url("/user"));
+        return redirect(url("/pray"));
     }
 
     /**
@@ -64,8 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $record = User::find($id);
-        return view('faith.user.edit', ['record' => $record]);
+        $record = Pray::find($id);
+        return view('faith.pray.edit', ['record' => $record]);
     }
 
     /**
@@ -77,12 +77,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->all();    
 
-        $record = User::find($id);
+        $record = Pray::find($id);
         $record->update($data);
 
-        return redirect(url("/user"));
+        return redirect(url("/pray"));
     }
 
     /**
@@ -93,9 +93,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $obj = User::find($id);
+        $obj = Pray::find($id);
         $obj->delete();
 
-        return redirect(url("/user"));
+        return redirect(url("/pray"));
     }
 }
+

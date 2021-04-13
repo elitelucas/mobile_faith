@@ -17,7 +17,7 @@ class CreateFavoriteVersesTable extends Migration
             $table->id();
             $table->integer('user_id')->nullable();
             $table->string('text')->nullable();
-            $table->string('reference')->nullable();
+            $table->string('reference', 256)->nullable();
             $table->timestamps();
         });
     }

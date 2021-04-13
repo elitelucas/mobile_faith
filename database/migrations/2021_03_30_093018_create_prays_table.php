@@ -17,7 +17,7 @@ class CreatePraysTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->string('description', 310)->nullable();
             $table->integer('religion_id')->nullable();
             $table->timestamps();
         });

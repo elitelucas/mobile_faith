@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,15 @@ Auth::routes();
 
 Route::view('/terms', 'faith.terms');
 Route::view('/policy', 'faith.policy');
+Route::group(['middleware' => 'auth'], function () {
+    //admin
+    Route::resource('/user', 'UserController');
+    Route::resource('/pray', 'PrayController');
+    Route::resource('/meditate', 'MeditateController');
+    Route::resource('/background', 'BackgroundController');
+});
 
 //Add routes before this line only
-Route::get('/{any}', 'HomeController@index');    
+Route::get('/{any}', 'HomeController@index');
 
 Route::get('/', 'HomeController@root');

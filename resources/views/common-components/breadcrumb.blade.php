@@ -6,10 +6,12 @@
 
              <div class="page-title-right">
                  <ol class="breadcrumb m-0">
-                     <li class="breadcrumb-item active">{{ $li_1 }}</li>
-                     @if(isset($li_2))
-                     <li class="breadcrumb-item">{{ $li_2 }}</li>
-                     @endif
+                    @if(isset($li_1))
+                    <li class="breadcrumb-item active">{{ $li_1 }}</li>
+                    @endif
+                    @if(isset($li_2))
+                    <li class="breadcrumb-item">{{ $li_2 }}</li>
+                    @endif
                  </ol>
              </div>
 

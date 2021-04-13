@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Background;
 use Str, Input, File;
 
-class UserController extends Controller
+class BackgroundController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $records = User::where('is_admin', 0)->get();
-        return view('faith.user.index', ['records' => $records]);
+        $records = Background::get();
+        return view('faith.background.index', ['records' => $records]);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('faith.user.create');
+        return view('faith.background.create');
     }
 
     /**
@@ -38,11 +38,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->all();   
+        $data = $request->all();
 
-        User::create($data);
+        $file = $request->file('file');
+        $destinationPath = 'uploads/background/';
+        $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+        $file->move($destinationPath, $fileName);
 
-        return redirect(url("/user"));
+        $data['path'] = $destinationPath . $fileName;
+
+        Background::create($data);
+
+        return redirect(url("/background"));
     }
 
     /**
@@ -64,8 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $record = User::find($id);
-        return view('faith.user.edit', ['record' => $record]);
+        $record = Background::find($id);
+        return view('faith.background.edit', ['record' => $record]);
     }
 
     /**
@@ -77,12 +84,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->all();    
 
-        $record = User::find($id);
+        $record = Background::find($id);
         $record->update($data);
 
-        return redirect(url("/user"));
+        return redirect(url("/background"));
     }
 
     /**
@@ -93,9 +100,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $obj = User::find($id);
+        $obj = Background::find($id);
+        File::delete(public_path($obj->path));
         $obj->delete();
 
-        return redirect(url("/user"));
+        return redirect(url("/background"));
     }
 }
