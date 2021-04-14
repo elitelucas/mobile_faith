@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\FavoriteVerse;
+use App\Following;
+use App\Invite;
+use App\Pray;
 use Str, Input, File;
 
 class UserController extends Controller
@@ -38,7 +42,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->all();   
+        $data = $request->all();
 
         User::create($data);
 
@@ -95,6 +99,11 @@ class UserController extends Controller
     {
         $obj = User::find($id);
         $obj->delete();
+
+        FavoriteVerse::where('user_id', $id)->delete();
+        Invite::where('sender_id', $id)->orwhere('receiver_id',$id)->delete();
+        Pray::where('user_id', $id)->delete();
+        Following::where('user_id', $id)->delete();
 
         return redirect(url("/user"));
     }

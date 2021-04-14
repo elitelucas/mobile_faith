@@ -129,7 +129,11 @@ class APIController extends Controller
 
     public function getBackground(Request $request)
     {
-        $backgrounds = Background::inRandomOrder()->limit(5)->get();
+        if ($request->limit)
+            $backgrounds = Background::inRandomOrder()->limit($request->limit)->get();
+        else
+            $backgrounds = Background::inRandomOrder()->limit(1)->get();
+
         return response()->json(['result' => true, 'data' => $backgrounds]);
     }
 

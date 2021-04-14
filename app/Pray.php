@@ -17,7 +17,7 @@ class Pray extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'description', 'religion_id'
+        'user_id', 'title', 'description'
     ];
 
     protected $appends = [
