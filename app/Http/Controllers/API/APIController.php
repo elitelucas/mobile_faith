@@ -123,7 +123,7 @@ class APIController extends Controller
 
     public function getMeditate(Request $request)
     {
-        $meditates = Meditate::inRandomOrder()->limit(20)->get();
+        $meditates = Meditate::orderby('id','DESC')->limit(40)->get();
         return response()->json(['result' => true, 'data' => $meditates]);
     }
 
@@ -155,6 +155,11 @@ class APIController extends Controller
 
     public function addFavoriteVerse(Request $request)
     {
+        if ($obj = FavoriteVerse::where('user_id', $request->user_id)->where('reference', $request->reference)->first()) {
+            $obj->delete();
+            return response()->json(['result' => true, 'data' => 'Unlike it.']);
+        }
+
         try {
             $data = $request->all();
             $obj = FavoriteVerse::create($data);

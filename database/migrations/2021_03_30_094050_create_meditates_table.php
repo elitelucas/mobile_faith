@@ -16,10 +16,8 @@ class CreateMeditatesTable extends Migration
         Schema::create('meditates', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('audio_path')->nullable();
-            $table->enum('type',['image','audio'])->default('image');
             $table->boolean('locked')->default(false);
             $table->timestamps();
         });

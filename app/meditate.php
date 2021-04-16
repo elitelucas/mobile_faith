@@ -12,12 +12,13 @@ class Meditate extends Model
     protected $appends = [
         'image_full_path', 'audio_full_path'
     ];
+
     protected $casts = [
         'locked' => 'boolean',
     ];
 
     protected $fillable = [
-        'title', 'description', 'image_path', 'audio_path', 'type', 'locked'
+        'title', 'image_path', 'audio_path',  'locked'
     ];
 
     public function getImageFullPathAttribute()

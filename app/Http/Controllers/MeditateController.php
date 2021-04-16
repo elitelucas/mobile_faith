@@ -15,9 +15,8 @@ class MeditateController extends Controller
      */
     public function index(Request $request)
     {
-        $type = $request->type;
-        $records = Meditate::where('type', $type)->get();
-        return view('faith.meditate.index', ['records' => $records, 'type' => $type]);
+        $records = Meditate::get();
+        return view('faith.meditate.index', ['records' => $records]);
     }
 
     /**
@@ -27,8 +26,7 @@ class MeditateController extends Controller
      */
     public function create(Request $request)
     {
-        $type = $request->type;
-        return view('faith.meditate.create', ['type' => $type]);
+        return view('faith.meditate.create');
     }
 
     /**
@@ -39,23 +37,25 @@ class MeditateController extends Controller
      */
     public function store(Request $request)
     {
-        $type = $request->type;
+
 
         $data = $request->all();
 
-        $file = $request->file('file');
+        $file = $request->file('image_file');
         $destinationPath = 'uploads/meditate/';
         $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
         $file->move($destinationPath, $fileName);
+        $data['image_path'] = $destinationPath . $fileName;
 
-        if ($type == 'image')
-            $data['image_path'] = $destinationPath . $fileName;
-        if ($type == 'audio')
-            $data['audio_path'] = $destinationPath . $fileName;
+        $file = $request->file('audio_file');
+        $destinationPath = 'uploads/meditate/';
+        $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+        $file->move($destinationPath, $fileName);
+        $data['audio_path'] = $destinationPath . $fileName;
 
         Meditate::create($data);
 
-        return redirect(url("/meditate?type=$type"));
+        return redirect(url("/meditate"));
     }
 
     /**
@@ -91,12 +91,12 @@ class MeditateController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $data['locked'] = $request->has('locked');       
+        $data['locked'] = $request->has('locked');
 
         $record = Meditate::find($id);
         $record->update($data);
 
-        return redirect(url("/meditate?type={$record->type}"));
+        return redirect(url("/meditate"));
     }
 
     /**
@@ -112,6 +112,6 @@ class MeditateController extends Controller
         File::delete(public_path($obj->audio_path));
         $obj->delete();
 
-        return redirect(url("/meditate?type={$obj->type}"));
+        return redirect(url("/meditate"));
     }
 }

@@ -25,11 +25,7 @@ Edit Meditate
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{$record->title}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" value="{{$record->description}}">
-                    </div>
+                    </div>                   
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="locked"
                             name="locked" @if($record->locked) checked @endif>

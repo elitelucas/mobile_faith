@@ -24,6 +24,10 @@ class Pray extends Model
         'user','followers'
     ];
 
+    protected $casts = [
+        'user_id' => 'integer',
+    ];
+
     public function getUserAttribute()
     {
         return User::select('id','name')->find($this->user_id);

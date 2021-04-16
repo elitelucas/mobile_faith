@@ -16,4 +16,9 @@ class Following extends Model
     protected $fillable = [
         'pray_id', 'user_id'
     ];
+    
+    protected $casts = [
+        'pray_id' => 'integer',
+        'user_id' => 'integer',
+    ];
 }
