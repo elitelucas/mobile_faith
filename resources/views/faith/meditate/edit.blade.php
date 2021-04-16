@@ -1,7 +1,7 @@
 @extends('layouts.master-layouts')
 
 @section('title')
-Edit Meditate
+Edit Sound
 @endsection
 
 @section('css')

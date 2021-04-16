@@ -29,11 +29,8 @@ Edit Pray
                     <div class="form-group">
                         <label for="description">Description</label>
                         <input type="text" class="form-control" id="description" name="description" value="{{$record->description}}">
-                    </div>   
-                    <div class="form-group">
-                        <label for="religion_id">ReligionID</label>
-                        <input type="number" class="form-control" id="religion_id" name="religion_id" value="{{$record->religion_id}}">
-                    </div>                              
+                    </div>  
+                                              
                     <div>
                         <button type="submit" class="btn btn-primary w-md">Submit</button>
                     </div>

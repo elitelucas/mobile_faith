@@ -28,7 +28,6 @@
                                     <th>User</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>ReligionID</th>
                                     <th>Date</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -41,7 +40,6 @@
                                         <td>{{ $record->user->name }}</td>
                                         <td>{{ $record->title }}</td>
                                         <td>{{ $record->description }}</td>
-                                        <td>{{ $record->religion_id }}</td>
                                         <td>{{ $record->created_at }}</td>
                                         <td>
                                             <a class="btn btn-primary"

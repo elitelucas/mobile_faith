@@ -1,7 +1,7 @@
 @extends('layouts.master-layouts')
 
 @section('title')
-    Add Meditate
+    Add Sound
 @endsection
 
 @section('css')
@@ -16,7 +16,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Add Meditate</h4>
+                    <h4 class="card-title mb-4">Add Sound</h4>
 
                     <form action="/meditate" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}

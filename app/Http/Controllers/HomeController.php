@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use App\Following;
+use App\Invite;
+use App\Pray;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -29,7 +33,7 @@ class HomeController extends Controller
         if (Session::get('lang')) {
             App::setLocale(Session::get('lang'));
         }
-        if(view()->exists($request->path())){
+        if (view()->exists($request->path())) {
             return view($request->path());
         }
         return view('pages-404');
@@ -37,9 +41,22 @@ class HomeController extends Controller
 
     public function root()
     {
-        if (Session::get('lang')) {
-            App::setLocale(Session::get('lang'));
+        $count = [
+            User::where('is_admin', 0)->count(),
+            Pray::count(),
+            Invite::count(),
+        ];
+
+        $statistics = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            array_push($statistics, [
+                User::where('is_admin', 0)->whereYear('created_at', date('Y'))->whereMonth('created_at', $month)->count(),
+                Pray::whereYear('created_at', date('Y'))->whereMonth('created_at', $month)->count(),
+                Invite::whereYear('created_at', date('Y'))->whereMonth('created_at', $month)->count(),
+            ]);
         }
-        return view('index');     
+
+        return view('index', ['count' => $count, 'statistics' => $statistics]);
     }
 }

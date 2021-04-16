@@ -34,7 +34,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [       
+    protected $casts = [
         'email_verified_at' => 'datetime',
         'religionID' => 'integer',
         'enablePush' => 'boolean',
@@ -42,9 +42,18 @@ class User extends Authenticatable
         'paid' => 'boolean',
     ];
 
+    protected $appends = [
+        'invites',
+    ];
+
     /*Login with Socialite*/
     public function socialProviders()
     {
         return $this->hasMany(socialProvider::class);
+    }
+
+    public function getInvitesAttribute()
+    {
+        return Invite::where('sender_id', $this->id)->orwhere('receiver_id', $this->id)->count();
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.master-layouts')
 
 @section('title')
-    Meditate List
+    Sounds List
 @endsection
 
 @section('css')
@@ -11,7 +11,7 @@
 
 @section('content')
     @component('common-components.breadcrumb')
-        @slot('title') Meditate Management @endslot
+        @slot('title') Sounds Management @endslot
     @endcomponent
 
     <div class="row">
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <a class="btn btn-success" href="/meditate/create">
-                        <i class="bx bx-plus-circle"></i> Add Meditate</a>
+                        <i class="bx bx-plus-circle"></i> Add Sound</a>
                     <div class="table-responsive mt-3">
                         <table id="datatable" class="table mb-0">
                             <thead>

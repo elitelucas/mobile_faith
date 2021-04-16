@@ -28,6 +28,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Praytime</th>
+                                    <th>Invites</th>
                                     <th>DamID</th>
                                     <th>ReligionID</th>
                                     <th>Created Date</th>
@@ -42,6 +43,7 @@
                                         <td>{{ $record->name }}</td>
                                         <td>{{ $record->email }}</td>
                                         <td>{{ $record->prayTime }}</td>
+                                        <td>{{ $record->invites }}</td>
                                         <td>{{ $record->damID }}</td>
                                         <td>{{ $record->religionID }}</td>
                                         <td>{{ $record->created_at }}</td>

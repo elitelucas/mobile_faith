@@ -11,8 +11,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="/user" class="dropdown-item">Users</a></a>
-                            <a href="/pray" class="dropdown-item">Prays</a></a>
-                            <a href="/meditate" class="dropdown-item">Meditates</a></a>
+                            <a href="/pray" class="dropdown-item">Prayers</a></a>
+                            <a href="/meditate" class="dropdown-item">Sounds</a></a>
                             <a href="/background" class="dropdown-item">Backgrounds</a></a>
                         </div>
                     </li>

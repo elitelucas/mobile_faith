@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
-use Validator, Exception;
+use Validator, Exception, Str, Mail, Log;
 use App\Http\Controllers\Controller;
-use DateTime;
+use DateTime, DB, Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use App\Mail\PasswordResetMail;
 
 class AuthController extends Controller
 {
@@ -47,6 +48,25 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['result' => false, 'message' =>  'User does not exist']);
+        }
+
+        $token = Str::random(60);
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' =>  $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        //SendEmail
+        try {
+            Mail::to($request->email)->queue(new PasswordResetMail($token));
+        } catch (Exception $e) {
+            return response()->json(['result' => false, 'message' =>  $e->getMessage()]);
+        }
     }
 
     public function updateProfile(Request $request)
