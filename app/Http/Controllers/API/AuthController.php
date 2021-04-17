@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\User;
 use Validator, Exception, Str, Mail, Log;
 use App\Http\Controllers\Controller;
-use DateTime, DB, Carbon;
+use DateTime, DB, Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +55,9 @@ class AuthController extends Controller
         }
 
         $token = Str::random(60);
+        DB::table('password_resets')->where([
+            'email' => $request->email,
+        ])->delete();
         DB::table('password_resets')->insert([
             'email' => $request->email,
             'token' =>  $token,
@@ -64,6 +67,7 @@ class AuthController extends Controller
         //SendEmail
         try {
             Mail::to($request->email)->queue(new PasswordResetMail($token));
+            return response()->json(['result' => true, 'data' => 'Reset Password Email Sent']);
         } catch (Exception $e) {
             return response()->json(['result' => false, 'message' =>  $e->getMessage()]);
         }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use DB, Hash;
+use App\User;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +30,33 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function showResetForm($token)
+    {
+        $tokenData  = DB::table('password_resets')->where('token', $token)->first();
+
+        if (!$tokenData) {
+            return view('faith.error', ['message' => 'You visited non-significant password reset link. Please try again.']);
+        }
+
+
+
+        return view('auth.passwords.reset', ['token' => $token, 'email' => $tokenData->email]);
+    }
+
+    public function reset(Request $request)
+    {
+        // dd($request->all());
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            return view('faith.error', ['message' => 'Email not found.']);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        DB::table('password_resets')->where('email',  $request->email)->delete();
+
+        return view('faith.success', ['message' => 'Password is changed successfully.']);
+    }
 }
