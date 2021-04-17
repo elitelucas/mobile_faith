@@ -4,7 +4,7 @@
     (located at https://faithspace.app) or FaithSpace’s mobile application (referred to below as “FaithSpace”). This
     Privacy Policy does not apply to any third-party websites, services or applications, even if they are accessible
     through our Services. This Privacy Policy is intended to meet requirements in North America, Europe, and other
-    jurisdictions. If you have questions regarding our Privacy Policy, please contact faithspacepp@gmail.com.</p>
+    jurisdictions. If you have questions regarding our Privacy Policy, please contact faithspaceapp@gmail.com.</p>
 <h2>What Information Do We Collect?</h2>
 <p>We collect certain information you voluntarily provide to us when using FaithSpace, such as when you create an
     account and profile, send or post information or other content to FaithSpace. We collect certain personal

@@ -51,8 +51,8 @@ class PrayTimeNotify extends Command
             if ($diff >= 0 && $diff < 300) {
                 // Log::info($user->id . ": " . $diff);
                 $deviceToken =  $user->deviceToken;
-                $title = 'Faithspace';
-                $body =  'Time to Pray';
+                $title = 'FaithSpace';
+                $body =  "Here's your daily reminder to pray";
                 $data = [
                     'type' => 'notification',
                 ];

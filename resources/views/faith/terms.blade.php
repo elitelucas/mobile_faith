@@ -106,11 +106,11 @@
     We may at any time and from time to time, in our sole discretion, change the fees and charges, or add new fees and
     charges, in relation to any of the Products or Services. We will notify you at least 30 calendar days in advance of
     any such change. If you do not agree to the change, you may cancel your membership or subscription in your account
-    settings or by emailing faithspacepp@gmail.com.
+    settings or by emailing faithspaceapp@gmail.com.
 </p>
 <h3>Return Policy</h3>
 <p>If for any reason, you are not satisfied with the Product you have purchased and you want to return the Product,
-    please contact faithspacepp@gmail.com for information on how you may return eligible Products.
+    please contact faithspaceapp@gmail.com for information on how you may return eligible Products.
 </p>
 <h3>Subscriptions Automatically Renew Until You Cancel & How to Cancel Your Subscription</h3>
 <p>All amounts are payable and charged: (i) for one-off purchase (e.g. lifetime Subscription), at the time you place
@@ -119,7 +119,7 @@
     until you cancel it, at the time of each renewal until you cancel, using the Payment Information you have provided.
     You must cancel your monthly or yearly Subscription before it renews to avoid the billing of the fees for the next
     Subscription period. If you purchase your Subscription via the Site, you can cancel the renewal of your subscription
-    at any time by contacting us by email at faithspacepp@gmail.com. If you purchase your Subscription via an App
+    at any time by contacting us by email at faithspaceapp@gmail.com. If you purchase your Subscription via an App
     Provider, you can cancel the renewal of your subscription with the App Provider. You will not receive a refund for
     the fees you already paid for your current subscription period and you will continue to receive the Services ordered
     until the end of your current Subscription period.
@@ -281,14 +281,14 @@
 </h2>
 <p>Although we aim to offer you the best service possible, we make no promise that the Products or Services will meet
     your requirements and we cannot guarantee that the Products or Services will be fault free. If a fault occurs in the
-    Products or Services, please report it to us at faithspacepp@gmail.com and we will review your complaint and, where
+    Products or Services, please report it to us at faithspaceapp@gmail.com and we will review your complaint and, where
     we determine it is appropriate to do so, correct the fault. If the need arises, we may suspend access to the
     Products or Services while we address the fault. We will not be liable to you if the Products or Services are
     unavailable for a commercially reasonable period of time.
     Your access to the Products or Services may be occasionally restricted to allow for repairs, maintenance or the
     introduction of new facilities or Products. We will restore the Products or Services as soon as we reasonably can.
     In the event that the Products or Services are unavailable, our usual Order and Cancellation deadlines apply; please
-    notify us of changes to your Order by emailing faithspacepp@gmail.com
+    notify us of changes to your Order by emailing faithspaceapp@gmail.com
 </p>
 <h2>Prohibitions</h2>
 <p>You agree not to do any of the following:
@@ -346,7 +346,7 @@
 </p>
 <h2>Termination</h2>
 <p>We may terminate your access to and use of the Services, at our sole discretion, at any time and without notice to
-    you. You may cancel your Account at any time by sending an email to us at faithspacepp@gmail.com. If you purchase
+    you. You may cancel your Account at any time by sending an email to us at faithspaceapp@gmail.com. If you purchase
     Subscription via an App Provider, you should also cancel your Subscription with the App Provider directly. Upon any
     termination, discontinuation or cancellation of Services or your Account, all provisions of these Terms which by
     their nature should survive will survive, including, without limitation, ownership provisions, warranty disclaimers,
@@ -411,7 +411,7 @@
     that you are the copyright or intellectual property owner or authorized to act on the copyright or intellectual
     property owner’s behalf.
     (g) Our designated agent for notice of claims of copyright infringement can be reached as follows:
-    By e-mail: faithspacepp@gmail.com Subject line: DMCA
+    By e-mail: faithspaceapp@gmail.com Subject line: DMCA
 </p>
 <h2>Limitations; Indemnity; Waiver of Liability</h2>
 <p>YOU ACKNOWLEDGE THAT FAITHSPACE, MICHAEL REALE, AND ITS AFFILIATE ENTITIES ARE NOT LIABLE
@@ -460,7 +460,7 @@
     copyrights, trademarks, trade secrets, patents or other intellectual property rights (the action described in the
     foregoing clause (ii), an “IP Protection Action”). Without limiting the preceding sentence, you will also have the
     right to litigate any other Dispute if you provide FaithSpace with written notice of your desire to do so by email
-    at faithspacepp@gmail.com within thirty (30) days following the date you first agree to these Terms (such notice, an
+    at faithspaceapp@gmail.com within thirty (30) days following the date you first agree to these Terms (such notice, an
     “Arbitration Opt-out Notice”). If you don’t provide FaithSpace with an Arbitration Opt-out Notice within the thirty
     (30) day period, you will be deemed to have knowingly and intentionally waived your right to litigate any Dispute
     except as expressly set forth in clauses (i) and (ii) above. The exclusive jurisdiction and venue of any IP
@@ -516,7 +516,7 @@
 <h3>Changes</h3>
 <p>Notwithstanding the provisions of the “Modification” section above, if FaithSpace changes this “Dispute Resolution”
     section after the date you first accepted these Terms (or accepted any subsequent changes to these Terms), you may
-    reject any such change by sending us written notice (including by email to faithspacepp@gmail.com within 30 days of
+    reject any such change by sending us written notice (including by email to faithspaceapp@gmail.com within 30 days of
     the date such change became effective, as indicated in the “Last Updated” date above or in the date of FaithSpace’s
     email to you notifying you of such change. By rejecting any change, you are agreeing that you will arbitrate any
     Dispute between you and FaithSpace in accordance with the provisions of this “Dispute Resolution” section as of the
@@ -567,7 +567,7 @@
 </h2>
 <p>While we cannot accept unsolicited ideas, FaithSpace is always pleased to receive feedback regarding its existing
     features. Please only provide specific feedback on existing features, and do not include ideas that our policy will
-    not permit us to accept or consider. You can share this at faithspacepp@gmail.com.
+    not permit us to accept or consider. You can share this at faithspaceapp@gmail.com.
     Any feedback you provide is deemed to be non-confidential and non-proprietary. FaithSpace shall be free to use such
     information on an unrestricted basis, without any compensation to you or any third party.
     FaithSpace does not accept or consider any unsolicited ideas, suggestions, proposals, comments or materials
@@ -586,4 +586,4 @@
 </ul>
 <h2>Contact Information</h2>
 <p>If you have any questions about these Terms or the Services or Products, please contact FaithSpace at
-    faithspacepp@gmail.com.</p>
+    faithspaceapp@gmail.com.</p>

@@ -29,7 +29,9 @@
                                     <th>Email</th>
                                     <th>Praytime</th>
                                     <th>Invites</th>
-                                    <th>DamID</th>
+                                    <th>FacebookID</th>
+                                    <th>GoogleID</th>
+                                    <th>AppleID</th>
                                     <th>ReligionID</th>
                                     <th>Created Date</th>
                                     <th>Edit</th>
@@ -44,7 +46,9 @@
                                         <td>{{ $record->email }}</td>
                                         <td>{{ $record->prayTime }}</td>
                                         <td>{{ $record->invites }}</td>
-                                        <td>{{ $record->damID }}</td>
+                                        <td>{{ $record->fbID }}</td>
+                                        <td>{{ $record->googleID }}</td>
+                                        <td>{{ $record->appleID }}</td>
                                         <td>{{ $record->religionID }}</td>
                                         <td>{{ $record->created_at }}</td>
                                         <td>

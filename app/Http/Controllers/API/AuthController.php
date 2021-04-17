@@ -111,11 +111,11 @@ class AuthController extends Controller
     {
         $data = $request->all();
 
-        if ($user = User::where('googleID', $request->googleID)->first()) {
+        if ($request->googleID && $user = User::where('googleID', $request->googleID)->first()) {
             $user->update($data);
             return response()->json(['result' => true, 'data' => $user]);
         }
-        if ($user = User::where('email', $request->email)->first()) {
+        if ($request->email && $user = User::where('email', $request->email)->first()) {
             $user->update($data);
             return response()->json(['result' => true, 'data' => $user]);
         }
