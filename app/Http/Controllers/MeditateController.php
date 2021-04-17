@@ -93,7 +93,30 @@ class MeditateController extends Controller
         $data = $request->all();
         $data['locked'] = $request->has('locked');
 
-        $record = Meditate::find($id);
+        $record = Meditate::find($id);       
+
+        if ($request->file('image_file')) {
+            $file = $request->file('image_file');
+            $destinationPath = 'uploads/meditate/';
+            $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $fileName);
+
+            File::delete(public_path($record->image_path));
+
+            $data['image_path'] = $destinationPath . $fileName;
+        }
+
+        if ($request->file('audio_file')) {
+            $file = $request->file('audio_file');
+            $destinationPath = 'uploads/meditate/';
+            $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $fileName);
+
+            File::delete(public_path($record->audio_path));
+
+            $data['audio_path'] = $destinationPath . $fileName;
+        }
+
         $record->update($data);
 
         return redirect(url("/meditate"));

@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Log;
 use App\User;
 use App\Http\Controllers\FirebaseController;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class PrayTimeNotify extends Command
 {
@@ -43,14 +44,20 @@ class PrayTimeNotify extends Command
         Log::info("============================================================");
         Log::info("Cron job: PrayTimeNotify  " . date('Y-m-d H:i:s'));
 
-        foreach (User::where('prayTime', date('H:i:s'))->get() as $user) {
-            $deviceToken =  $user->deviceToken;
-            $title = 'Faithspace';
-            $body =  'Time to Pray';
-            $data = [
-                'type' => 'notification',
-            ];
-            FirebaseController::sendNotification($deviceToken, $title, $body, $data);
+        $now = strtotime(gmdate('H:i:s'));
+        foreach (User::where('is_admin', 0)->get() as $user) {
+            $praytime = strtotime($user->prayTime);
+            $diff = $praytime - $now;
+            if ($diff >= 0 && $diff < 300) {
+                // Log::info($user->id . ": " . $diff);
+                $deviceToken =  $user->deviceToken;
+                $title = 'Faithspace';
+                $body =  'Time to Pray';
+                $data = [
+                    'type' => 'notification',
+                ];
+                FirebaseController::sendNotification($deviceToken, $title, $body, $data);
+            }
         }
     }
 }

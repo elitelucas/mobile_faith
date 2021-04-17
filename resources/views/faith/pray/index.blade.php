@@ -37,7 +37,7 @@
                                 @foreach ($records as $key => $record)
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
-                                        <td>{{ $record->user->name }}</td>
+                                        <td>{{ @$record->user->name }}</td>
                                         <td>{{ $record->title }}</td>
                                         <td>{{ $record->description }}</td>
                                         <td>{{ $record->created_at }}</td>
