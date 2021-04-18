@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\PrayTimeNotify::class,
+        Commands\RevenuecatCheck::class,
     ];
 
     /**
@@ -25,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('praytime:notify')->everyMinute();
+        $schedule->command('revenuecat:check')->everyThirtyMinutes();
     }
 
     /**
