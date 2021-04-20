@@ -94,12 +94,11 @@ class AuthController extends Controller
     {
         $data = $request->all();
 
-        if ($user = User::where('fbID', $request->fbID)->first()) {
-            $user->update($data);
-            return response()->json(['result' => true, 'data' => $user]);
-        }
-        if ($user = User::where('email', $request->email)->first()) {
-            $user->update($data);
+        if (($request->fbID && $user = User::where('fbID', $request->fbID)->first()) ||
+            ($request->email && $user = User::where('email', $request->email)->first())
+        ) {
+            $user->deviceToken = $request->deviceToken;
+            $user->save();
             return response()->json(['result' => true, 'data' => $user]);
         }
 
@@ -111,12 +110,11 @@ class AuthController extends Controller
     {
         $data = $request->all();
 
-        if ($request->googleID && $user = User::where('googleID', $request->googleID)->first()) {
-            $user->update($data);
-            return response()->json(['result' => true, 'data' => $user]);
-        }
-        if ($request->email && $user = User::where('email', $request->email)->first()) {
-            $user->update($data);
+        if (($request->googleID && $user = User::where('googleID', $request->googleID)->first()) ||
+            ($request->email && $user = User::where('email', $request->email)->first())
+        ) {
+            $user->deviceToken = $request->deviceToken;
+            $user->save();
             return response()->json(['result' => true, 'data' => $user]);
         }
 
@@ -128,12 +126,11 @@ class AuthController extends Controller
     {
         $data = $request->all();
 
-        if ($user = User::where('appleID', $request->appleID)->first()) {
-            $user->update($data);
-            return response()->json(['result' => true, 'data' => $user]);
-        }
-        if ($user = User::where('email', $request->email)->first()) {
-            $user->update($data);
+        if (($request->appleID && $user = User::where('appleID', $request->appleID)->first()) ||
+            ($request->email && $user = User::where('email', $request->email)->first())
+        ) {
+            $user->deviceToken = $request->deviceToken;
+            $user->save();
             return response()->json(['result' => true, 'data' => $user]);
         }
 

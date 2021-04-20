@@ -48,13 +48,12 @@ class PrayTimeNotify extends Command
         foreach (User::where('is_admin', 0)->get() as $user) {
             $praytime = strtotime($user->prayTime);
             $diff = $praytime - $now;
-            if ($diff >= 0 && $diff < 300) {
-                // Log::info($user->id . ": " . $diff);
+            if ($diff >= 0 && $diff < 300) {                
                 $deviceToken =  $user->deviceToken;
                 $title = 'FaithSpace';
                 $body =  "Here's your daily reminder to pray";
                 $data = [
-                    'type' => 'notification',
+                    'type' => "Here's your daily reminder to pray",
                 ];
                 FirebaseController::sendNotification($deviceToken, $title, $body, $data);
             }

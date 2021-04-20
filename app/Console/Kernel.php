@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('praytime:notify')->everyMinute();
-        $schedule->command('revenuecat:check')->everyThirtyMinutes();
+        $schedule->command('revenuecat:check')->hourly();
     }
 
     /**

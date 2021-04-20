@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Log;
+use App\User;
 
 class RevenuecatCheck extends Command
 {
@@ -41,23 +42,21 @@ class RevenuecatCheck extends Command
     {
         Log::info("Cron job: Revecuecat Check  " . date('Y-m-d H:i:s'));
 
-        $state = "expire";
-        $endpoint = 'https://api.revenuecat.com/v1/subscribers/' . '1';
+        foreach (User::where('is_admin', 0)->get() as $user) {
+            $endpoint = 'https://api.revenuecat.com/v1/subscribers/' .  $user->id;
 
-        //Get or Create Subscription Info on RevenueCat
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer WFpqdzAwxwVzyXPBwtkfPEcpDUtvDnrG',
-        ])->get($endpoint, [
-            // 'name' => 'Taylor',
-        ])->throw()->json();
-
-        Log::info($response);
-
-        if ($response["subscriber"]["entitlements"] != null) {            
-            $state = "active";          
-        } else {
-          
+            //Get or Create Subscription Info on RevenueCat
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer WFpqdzAwxwVzyXPBwtkfPEcpDUtvDnrG',
+            ])->get($endpoint, [
+                // 'name' => 'Taylor',
+            ])->throw()->json();
+           
+            if ($response["subscriber"]["entitlements"] != null) { //User paid
+                $user->paid = true;
+                $user->save();
+            } else {
+            }
         }
-
     }
 }
