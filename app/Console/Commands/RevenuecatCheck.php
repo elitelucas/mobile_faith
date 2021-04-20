@@ -40,7 +40,7 @@ class RevenuecatCheck extends Command
      */
     public function handle()
     {
-        Log::info("Cron job: Revecuecat Check  " . date('Y-m-d H:i:s'));
+        Log::info("Cron job: Revenuecat Check  " . date('Y-m-d H:i:s'));
 
         foreach (User::where('is_admin', 0)->get() as $user) {
             $endpoint = 'https://api.revenuecat.com/v1/subscribers/' .  $user->id;
