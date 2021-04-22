@@ -123,7 +123,14 @@ class APIController extends Controller
 
     public function getMeditate(Request $request)
     {
-        $meditates = Meditate::orderby('id','DESC')->limit(40)->get();
+        $user = User::find($request->user_id);
+
+        $meditates = Meditate::orderby('id', 'DESC')->limit(40)->get();
+        foreach ($meditates as $meditate) {
+            $title = $meditate->title;
+            $title = @$title[$user->bibleLanguageCode];
+            $meditate->title = $title;
+        }
         return response()->json(['result' => true, 'data' => $meditates]);
     }
 

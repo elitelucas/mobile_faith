@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Title</th>
+                                    <th>Title(English)</th>
                                     <th>Status</th>
                                     <th>Image</th>
                                     <th>Audio</th>
@@ -38,7 +38,7 @@
                                 @foreach ($records as $key => $record)
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
-                                        <td>{{ $record->title }}</td>
+                                        <td>{{ $record->title['ENG'] }}</td>
                                         <td>
                                             @if ($record->locked)
                                                 <span style="color:red; font-size:20px;"><i class="bx bx-lock"></i></span>

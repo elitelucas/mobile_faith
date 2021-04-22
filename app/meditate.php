@@ -14,6 +14,7 @@ class Meditate extends Model
     ];
 
     protected $casts = [
+        'title' => 'array',
         'locked' => 'boolean',
     ];
 

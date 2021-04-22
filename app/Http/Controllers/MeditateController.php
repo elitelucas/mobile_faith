@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Meditate;
-use Str, Input, File;
+use Str, Input, File, Config;
 
 class MeditateController extends Controller
 {
@@ -37,16 +37,20 @@ class MeditateController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $data = $request->all();
-
+        //save title
+        $title = [];
+        foreach (Config::get('constants.languages') as $language) {
+            $title[$language['code']] = $data['title_' . $language['code']];
+        }
+        $data['title'] = $title;
+        //save image file
         $file = $request->file('image_file');
         $destinationPath = 'uploads/meditate/';
         $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
         $file->move($destinationPath, $fileName);
         $data['image_path'] = $destinationPath . $fileName;
-
+        //save audio file
         $file = $request->file('audio_file');
         $destinationPath = 'uploads/meditate/';
         $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
@@ -93,7 +97,14 @@ class MeditateController extends Controller
         $data = $request->all();
         $data['locked'] = $request->has('locked');
 
-        $record = Meditate::find($id);       
+        $record = Meditate::find($id);
+
+        //save title
+        $title = $record->title;
+        foreach (Config::get('constants.languages') as $language) {
+            $title[$language['code']] = $data['title_' . $language['code']];
+        }
+        $data['title'] = $title;
 
         if ($request->file('image_file')) {
             $file = $request->file('image_file');

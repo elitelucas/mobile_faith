@@ -20,16 +20,22 @@
 
                     <form action="/meditate" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        <div class="row">
+                            @foreach (Config::get('constants.languages') as $language)
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Title({{ $language['name'] }})</label>
+                                        <input type="text" class="form-control" name="title_{{$language['code']}}">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required>
-                        </div>                       
-                        <div class="form-group">
-                            <label for="formrow-firstname-input">Image File</label>                          
+                            <label for="formrow-firstname-input">Image File</label>
                             <input type="file" name="image_file" accept="image/*" required>
                         </div>
                         <div class="form-group">
-                            <label for="formrow-firstname-input">Audio File</label>                          
+                            <label for="formrow-firstname-input">Audio File</label>
                             <input type="file" name="audio_file" accept="audio/*" required>
                         </div>
                         <div>
