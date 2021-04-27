@@ -187,9 +187,8 @@ class APIController extends Controller
     }
 
     public function getFavoriteVerse(Request $request)
-
     {
-        $verses = FavoriteVerse::where('user_id', $request->user_id)->get();
+        $verses = FavoriteVerse::where('user_id', $request->user_id)->orderby('created_at', 'DESC')->get();
         return response()->json(['result' => true, 'data' =>   $verses]);
     }
 
