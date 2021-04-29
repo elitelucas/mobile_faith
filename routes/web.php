@@ -18,7 +18,10 @@ Route::view('/terms', 'faith.terms');
 Route::view('/policy', 'faith.policy');
 Route::group(['middleware' => 'auth'], function () {
     //admin
+    Route::any('/resetpassword', 'HomeController@resetpassword');
     Route::resource('/user', 'UserController');
+    Route::get('/user/changepassword/{id}', 'UserController@changepassword');
+    Route::post('/user/updatepassword', 'UserController@updatepassword');
     Route::resource('/pray', 'PrayController');
     Route::resource('/meditate', 'MeditateController');
     Route::resource('/background', 'BackgroundController');

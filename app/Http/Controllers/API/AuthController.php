@@ -23,10 +23,14 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = Auth::user();
-            $user->deviceToken = $request->deviceToken;
-            $user->save();
+            if ($user->is_active) {
+                $user->deviceToken = $request->deviceToken;
+                $user->save();
 
-            return response()->json(['result' => true, 'data' => $user]);
+                return response()->json(['result' => true, 'data' => $user]);
+            } else {
+                return response()->json(['result' => false, 'message'  => 'User is blocked']);
+            }
         } else {
             return response()->json(['result' => false, 'message'  => 'Email or password is incorrect']);
         }

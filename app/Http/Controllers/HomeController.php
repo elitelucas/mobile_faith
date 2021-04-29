@@ -10,6 +10,7 @@ use App\Following;
 use App\Invite;
 use App\Pray;
 use App\User;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -58,5 +59,19 @@ class HomeController extends Controller
         }
 
         return view('index', ['count' => $count, 'statistics' => $statistics]);
+    }
+
+    public function resetpassword(Request $request)
+    {
+        if ($request->method() == 'GET') {
+            return view('faith.resetpassword');
+        } else if ($request->method() == 'POST') {
+            if ($request->new_password == $request->confirm_password) {
+                User::where('is_admin', 1)->update(['password' => Hash::make($request->new_password)]);
+                return view('faith.resetpassword')->with('success', 'Password Changed Successfully!');
+            } else {
+                return view('faith.resetpassword')->with('error', 'Password Not Match. Try Again.');
+            }
+        }
     }
 }

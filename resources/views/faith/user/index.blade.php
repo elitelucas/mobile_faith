@@ -29,13 +29,15 @@
                                     <th>Email</th>
                                     <th>Praytime</th>
                                     <th>Invites</th>
-                                    <th>FacebookID</th>
+                                    {{-- <th>FacebookID</th>
                                     <th>GoogleID</th>
-                                    <th>AppleID</th>
-                                    <th>ReligionID</th>
+                                    <th>AppleID</th> --}}
+                                    <th>Religion</th>
                                     <th>Created Date</th>
+                                    <th>Status</th>
                                     <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Change Password</th>
+                                    {{-- <th>Delete</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,23 +48,26 @@
                                         <td>{{ $record->email }}</td>
                                         <td>{{ $record->prayTime }}</td>
                                         <td>{{ $record->invites }}</td>
-                                        <td>{{ $record->fbID }}</td>
+                                        {{-- <td>{{ $record->fbID }}</td>
                                         <td>{{ $record->googleID }}</td>
-                                        <td>{{ $record->appleID }}</td>
-                                        <td>{{ $record->religionID }}</td>
+                                        <td>{{ $record->appleID }}</td> --}}
+                                        <td>{{ $record->religion_name }}</td>
                                         <td>{{ $record->created_at }}</td>
+                                        <td>{{ $record->is_active ? 'Active' : 'Blocked' }}</td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('user.edit', $record->id) }}">
                                                 <i class="bx bx-edit"></i></a>
                                         </td>
-                                        <td>
+                                        <td><a class="btn btn-success" href="{{ url('user/changepassword', $record->id) }}">
+                                            <i class="bx bx-key"></i></a></td>
+                                        {{-- <td>
                                             <form action="/user/{{ $record->id }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <button class="btn btn-danger" type="submit"> <i
                                                         class="bx bx-trash"></i></button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

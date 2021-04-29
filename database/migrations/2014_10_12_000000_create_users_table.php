@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->boolean('paid')->default(false);
             $table->dateTime('lastPray')->nullable();
             $table->boolean('is_admin')->default(0);
+            $table->boolean('is_active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

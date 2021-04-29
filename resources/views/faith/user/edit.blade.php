@@ -5,8 +5,6 @@ Edit User
 @endsection
 
 @section('css')
-<!-- Summernote css -->
-<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/summernote/summernote.min.css') }}">
 @endsection
 
 @section('content')
@@ -29,7 +27,11 @@ Edit User
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{$record->email}}">
-                    </div>                                 
+                    </div>        
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="is_active" name="is_active" @if ($record->is_active) checked @endif>
+                        <label class="custom-control-label" for="is_active">Activate/Block</label>
+                    </div>                         
                     <div>
                         <button type="submit" class="btn btn-primary w-md">Submit</button>
                     </div>
@@ -44,15 +46,8 @@ Edit User
 @endsection
 
 @section('script')
-<!-- Summernote js -->
-<script src="{{ URL::asset('assets/libs/summernote/summernote.min.js') }}"></script>
 
 <script>
-    $(".summernote").summernote({
-        height: 300,
-        minHeight: null,
-        maxHeight: null,
-        focus: !0
-    });
+   
 </script>
 @endsection

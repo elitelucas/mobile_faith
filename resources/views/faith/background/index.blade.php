@@ -7,6 +7,7 @@
 @section('css')
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/datatables/datatables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.css') }}">
 @endsection
 
 @section('content')
@@ -34,8 +35,12 @@
                                 @foreach ($records as $key => $record)
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
-                                        <td><img src="{{ asset($record->path) }}" alt="" height="50"></td>
-                                        <td>{{ $record->created_at }}</td>                                       
+                                        <td>
+                                            <a class="image-popup-no-margins" href="{{ asset($record->path) }}">
+                                                <img class="img-fluid" alt="" src="{{ asset($record->path) }}" width="100">
+                                            </a>                                           
+                                        </td>
+                                        <td>{{ $record->created_at }}</td>                                        
                                         <td>
                                             <form action="/background/{{ $record->id }}" method="POST">
                                                 {{ csrf_field() }}
@@ -61,7 +66,10 @@
 @section('script')
     <!-- Plugins js -->
     <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js') }}"></script>
-
+    <!-- Magnific Popup -->
+    <script src="{{ URL::asset('assets/libs/magnific-popup/magnific-popup.min.js') }}"></script>
+    <!-- Lightbox init js -->
+    <script src="{{ URL::asset('assets/js/pages/lightbox.init.js') }}"></script>
     <script>
         $(document).ready(function() {
             $("#datatable").DataTable();

@@ -11,7 +11,7 @@
 
 @section('content')
     @component('common-components.breadcrumb')
-        @slot('title') Pray Management @endslot
+        @slot('title') Prayer Management @endslot
     @endcomponent
 
     <div class="row">

@@ -8,7 +8,7 @@ use App\FavoriteVerse;
 use App\Following;
 use App\Invite;
 use App\Pray;
-use Str, Input, File;
+use Str, Input, File, Hash;
 
 class UserController extends Controller
 {
@@ -82,6 +82,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        if ($request->is_active) {
+            $data['is_active'] = true;
+        } else {
+            $data['is_active'] = false;
+        }
 
         $record = User::find($id);
         $record->update($data);
@@ -101,10 +106,27 @@ class UserController extends Controller
         $obj->delete();
 
         FavoriteVerse::where('user_id', $id)->delete();
-        Invite::where('sender_id', $id)->orwhere('receiver_id',$id)->delete();
+        Invite::where('sender_id', $id)->orwhere('receiver_id', $id)->delete();
         Pray::where('user_id', $id)->delete();
         Following::where('user_id', $id)->delete();
 
         return redirect(url("/user"));
+    }
+
+    public function changepassword(Request $request, $id)
+    {
+        $record = User::find($id);
+        return view('faith.user.changepassword', ['record' => $record]);
+    }
+
+    public function updatepassword(Request $request)
+    {
+        $record = User::find($request->id);
+        if ($request->new_password == $request->confirm_password) {
+            $record->update(['password' => Hash::make($request->new_password)]);
+            return view('faith.user.changepassword', ['record' => $record])->with('success', 'Password Changed Successfully!');
+        } else {
+            return view('faith.user.changepassword', ['record' => $record])->with('error', 'Password Not Match. Try Again.');
+        }
     }
 }

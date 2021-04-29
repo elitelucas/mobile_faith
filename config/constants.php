@@ -30,5 +30,22 @@ return [
         ["code" => "TRK", "name" => "Turkish"],
         ["code" => "UKR", "name" => "Ukrainian"],
         ["code" => "VIE", "name" => "Vietnamese"],
+    ],
+    'religions' => [
+        ["id" => 1, "name" => "Anglican"],
+        ["id" => 2, "name" => "Baptist"],
+        ["id" => 3, "name" => "Calvinist"],
+        ["id" => 4, "name" => "Catholic"],
+        ["id" => 5, "name" => "Eastern Orthodox"],
+        ["id" => 6, "name" => "Jehovah’s Witness"],
+        ["id" => 7, "name" => "Latter-day Saints"],
+        ["id" => 8, "name" => "Lutheran"],
+        ["id" => 9, "name" => "Methodist"],
+        ["id" => 10, "name" => "Nondenominational"],
+        ["id" => 11, "name" => "Oriental Orthodox"],
+        ["id" => 12, "name" => "Pentecostal"],
+        ["id" => 13, "name" => "Presbyterian"],
+        ["id" => 14, "name" => "Quaker"],
+        ["id" => 15, "name" => "Restorationist"],
     ]
 ];

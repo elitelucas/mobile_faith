@@ -72,6 +72,9 @@
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/resetpassword"><i
+                            class="bx bx-key font-size-16 align-middle mr-1"></i>
+                       Change Password </a>
                     <a class="dropdown-item text-danger" href="javascript:void();"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                             class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>

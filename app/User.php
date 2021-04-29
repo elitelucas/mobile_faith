@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Config;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'deviceToken', 'fbID', 'googleID', 'appleID', 'damID', 'lastPray',
+        'name', 'email', 'password', 'deviceToken', 'fbID', 'googleID', 'appleID', 'damID', 'lastPray', 'is_active'
     ];
 
     /**
@@ -55,5 +56,14 @@ class User extends Authenticatable
     public function getInvitesAttribute()
     {
         return Invite::where('sender_id', $this->id)->orwhere('receiver_id', $this->id)->count();
+    }
+
+    public function getReligionNameAttribute()
+    {
+        foreach (Config::get('constants.religions') as $religion) {
+            if ($religion['id'] == $this->religionID)
+                return $religion['name'];
+        }
+        return 'Unknown';
     }
 }
