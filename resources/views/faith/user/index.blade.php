@@ -29,9 +29,9 @@
                                     <th>Email</th>
                                     <th>Praytime</th>
                                     <th>Invites</th>
-                                    {{-- <th>FacebookID</th>
+                                    <th>FacebookID</th>
                                     <th>GoogleID</th>
-                                    <th>AppleID</th> --}}
+                                    <th>AppleID</th>
                                     <th>Religion</th>
                                     <th>Created Date</th>
                                     <th>Status</th>
@@ -48,9 +48,9 @@
                                         <td>{{ $record->email }}</td>
                                         <td>{{ $record->prayTime }}</td>
                                         <td>{{ $record->invites }}</td>
-                                        {{-- <td>{{ $record->fbID }}</td>
+                                        <td>{{ $record->fbID }}</td>
                                         <td>{{ $record->googleID }}</td>
-                                        <td>{{ $record->appleID }}</td> --}}
+                                        <td>{{ $record->appleID }}</td>
                                         <td>{{ $record->religion_name }}</td>
                                         <td>{{ $record->created_at }}</td>
                                         <td>{{ $record->is_active ? 'Active' : 'Blocked' }}</td>

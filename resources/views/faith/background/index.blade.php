@@ -26,6 +26,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Filename</th>
                                     <th>Source</th>
                                     <th>Date</th>
                                     <th>Delete</th>
@@ -35,12 +36,14 @@
                                 @foreach ($records as $key => $record)
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
+                                        <th>{{ $record->origin_name }}</th>
                                         <td>
                                             <a class="image-popup-no-margins" href="{{ asset($record->path) }}">
-                                                <img class="img-fluid" alt="" src="{{ asset($record->path) }}" width="100">
-                                            </a>                                           
+                                                <img class="img-fluid" alt="" src="{{ asset($record->path) }}"
+                                                    width="100">
+                                            </a>
                                         </td>
-                                        <td>{{ $record->created_at }}</td>                                        
+                                        <td>{{ $record->created_at }}</td>
                                         <td>
                                             <form action="/background/{{ $record->id }}" method="POST">
                                                 {{ csrf_field() }}

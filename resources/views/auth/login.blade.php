@@ -23,7 +23,7 @@
                                     <div class="col-7">
                                         <div class="text-primary p-4">
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <p>Sign in to continue to Faithspace.</p>
+                                            <p>Sign in to continue to FaithSpace admin panel.</p>
                                         </div>
                                     </div>
                                     <div class="col-5 align-self-end">
@@ -36,7 +36,7 @@
                                     <a href="{{ url('index') }}">
                                         <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
-                                                <img src="assets/images/logo.svg" alt="" class="rounded-circle" height="34">
+                                                <img src="assets/images/logo.png" alt="" class="rounded-circle" height="34">
                                             </span>
                                         </div>
                                     </a>

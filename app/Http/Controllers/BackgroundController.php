@@ -46,6 +46,7 @@ class BackgroundController extends Controller
         $file->move($destinationPath, $fileName);
 
         $data['path'] = $destinationPath . $fileName;
+        $data['origin_name'] = $file->getClientOriginalName();
 
         Background::create($data);
 

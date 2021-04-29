@@ -30,7 +30,7 @@ Edit User
                     </div>        
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="is_active" name="is_active" @if ($record->is_active) checked @endif>
-                        <label class="custom-control-label" for="is_active">Activate/Block</label>
+                        <label class="custom-control-label" for="is_active">Active / Block</label>
                     </div>                         
                     <div>
                         <button type="submit" class="btn btn-primary w-md">Submit</button>

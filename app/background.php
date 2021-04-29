@@ -14,7 +14,7 @@ class Background extends Model
     ];
 
     protected $fillable = [
-        'path'
+        'path', 'origin_name'
     ];
 
     public function getFullPathAttribute()
