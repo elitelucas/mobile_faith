@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/changepassword/{id}', 'UserController@changepassword');
     Route::post('/user/updatepassword', 'UserController@updatepassword');
     Route::resource('/pray', 'PrayController');
+    Route::resource('/bible', 'BibleController');
     Route::resource('/meditate', 'MeditateController');
     Route::resource('/background', 'BackgroundController');
 });

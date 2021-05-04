@@ -31,6 +31,15 @@ return [
         ["code" => "UKR", "name" => "Ukrainian"],
         ["code" => "VIE", "name" => "Vietnamese"],
     ],
+    'bible_languages' => [
+        'Danish',
+        'German',
+        'Italian',
+        'Korean',
+        'Norwegian',
+        'Polish',
+        'Thai',
+    ],
     'religions' => [
         ["id" => 1, "name" => "Anglican"],
         ["id" => 2, "name" => "Baptist"],
