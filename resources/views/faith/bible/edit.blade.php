@@ -33,15 +33,15 @@
                         </div>
                         <div class="form-group">
                             <label>DamID</label>
-                            <input type="number" class="form-control" name="damID" value={{$record->damID}} required>
+                            <input type="text" class="form-control" name="damID" value={{$record->damID}} required>
                         </div>
                         <div class="form-group">
                             <label>BookID</label>
-                            <input type="number" class="form-control" name="bookID" value={{$record->bookID}} required>
+                            <input type="text" class="form-control" name="bookID" value={{$record->bookID}} required>
                         </div>
                         <div class="form-group">
                             <label>ChapterID</label>
-                            <input type="number" class="form-control" name="chapterID" value={{$record->chapterID}} required>
+                            <input type="text" class="form-control" name="chapterID" value={{$record->chapterID}} required>
                         </div>
                         <div class="form-group">
                             <label>Audio File(Upload again only when want to update)</label>

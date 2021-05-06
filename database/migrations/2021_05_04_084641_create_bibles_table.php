@@ -16,9 +16,9 @@ class CreateBiblesTable extends Migration
         Schema::create('bibles', function (Blueprint $table) {
             $table->id();
             $table->string('language')->nullable();
-            $table->integer('damID')->default(0);
-            $table->integer('bookID')->default(0);
-            $table->integer('chapterID')->default(0);
+            $table->string('damID')->default(0);
+            $table->string('bookID')->default(0);
+            $table->string('chapterID')->default(0);
             $table->string('audio_path')->nullable();
             $table->timestamps();
         });

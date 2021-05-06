@@ -30,15 +30,15 @@
                         </div>
                         <div class="form-group">
                             <label>DamID</label>
-                            <input type="number" class="form-control" name="damID" required>
+                            <input type="text" class="form-control" name="damID" required>
                         </div>
                         <div class="form-group">
                             <label>BookID</label>
-                            <input type="number" class="form-control" name="bookID" required>
+                            <input type="text" class="form-control" name="bookID" required>
                         </div>
                         <div class="form-group">
                             <label>ChapterID</label>
-                            <input type="number" class="form-control" name="chapterID" required>
+                            <input type="text" class="form-control" name="chapterID" required>
                         </div>
                         <div class="form-group">
                             <label>Audio File</label>
