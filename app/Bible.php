@@ -10,6 +10,6 @@ class Bible extends Model
     use HasFactory;
 
     protected $fillable = [
-        'language', 'damID', 'bookID', 'chapterID','audio_path'
-    ]; 
+        'language', 'damID', 'volume_name', 'bookID', 'chapterID', 'audio_path'
+    ];
 }

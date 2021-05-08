@@ -27,6 +27,7 @@
                                     <th>No</th>
                                     <th>Language</th>
                                     <th>DamID</th>
+                                    <th>Volume Name</th>
                                     <th>BookID</th>
                                     <th>ChapterID</th>
                                     <th>Audio</th>
@@ -41,6 +42,7 @@
                                         <th scope="row">{{ $key + 1 }}</th>
                                         <td>{{ $record->language }}</td>
                                         <td>{{ $record->damID }}</td>
+                                        <td>{{ $record->volume_name }}</td>
                                         <td>{{ $record->bookID }}</td>
                                         <td>{{ $record->chapterID }}</td>
                                         <td><audio controls>

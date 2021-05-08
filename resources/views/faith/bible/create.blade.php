@@ -33,6 +33,10 @@
                             <input type="text" class="form-control" name="damID" required>
                         </div>
                         <div class="form-group">
+                            <label>Volume Name</label>
+                            <input type="text" class="form-control" name="volume_name" required>
+                        </div>
+                        <div class="form-group">
                             <label>BookID</label>
                             <input type="text" class="form-control" name="bookID" required>
                         </div>
