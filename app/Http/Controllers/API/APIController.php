@@ -9,6 +9,7 @@ use App\Following;
 use App\Invite;
 use App\Meditate;
 use App\Pray;
+use App\Bible;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB, Validator, Exception;
@@ -222,6 +223,19 @@ class APIController extends Controller
         if (!$invite) return response()->json(['result' => false, 'message' => 'No invite']);
         $invite->update(['state' => $request->state]);
         return response()->json(['result' => true, 'data' =>   $invite]);
+    }
+
+    public function getAudioBible(Request $request)
+    {
+        $user_id = $request->user_id;
+        $damID = $request->damID;
+        $bookID = $request->bookID;
+        $chapterID = $request->chapterID;
+        if ($record = Bible::where('damID', $damID)->where('bookID', $bookID)->where('chapterID', $chapterID)->first()) {
+            return response()->json(['result' => true, 'data' =>  $record->full_path]);
+        } else {
+            return response()->json(['result' => false, 'message' =>  'Bible not found']);
+        }
     }
 
     public function test(Request $request)

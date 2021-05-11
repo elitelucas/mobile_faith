@@ -12,4 +12,9 @@ class Bible extends Model
     protected $fillable = [
         'language', 'damID', 'volume_name', 'bookID', 'chapterID', 'audio_path'
     ];
+
+    public function getFullPathAttribute()
+    {
+        return asset($this->audio_path);
+    }
 }
