@@ -238,6 +238,16 @@ class APIController extends Controller
         }
     }
 
+    public function getAudioList(Request $request)
+    {
+        $user_id = $request->user_id;
+        $damID = $request->damID;
+        $bookID = $request->bookID;
+
+        $records = Bible::where('damID', $damID)->where('bookID', $bookID)->get();
+        return response()->json(['result' => true, 'data' =>  $records]);        
+    }
+
     public function test(Request $request)
     {
         return response()->json(['result' => true, 'data' => 'Faith API working']);

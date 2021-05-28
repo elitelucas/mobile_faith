@@ -38,4 +38,5 @@ Route::post('make_payment', 'API\APIController@makePayment');
 Route::post('get_one_invite', 'API\APIController@getOneInvite');
 Route::post('update_invite', 'API\APIController@updateInvite');
 Route::post('get_audio_bible', 'API\APIController@getAudioBible');
+Route::post('get_audio_list', 'API\APIController@getAudioList');
 Route::post('test', 'API\APIController@test');
