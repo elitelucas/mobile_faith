@@ -44,6 +44,12 @@ class MeditateController extends Controller
             $title[$language['code']] = $data['title_' . $language['code']];
         }
         $data['title'] = $title;
+        //save thumbnail file
+        $file = $request->file('thumbnail_file');
+        $destinationPath = 'uploads/meditate/';
+        $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+        $file->move($destinationPath, $fileName);
+        $data['thumbnail_path'] = $destinationPath . $fileName;
         //save image file
         $file = $request->file('image_file');
         $destinationPath = 'uploads/meditate/';
@@ -106,6 +112,17 @@ class MeditateController extends Controller
         }
         $data['title'] = $title;
 
+        if ($request->file('thumbnail_file')) {
+            $file = $request->file('thumbnail_file');
+            $destinationPath = 'uploads/meditate/';
+            $fileName = Str::random(5) . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $fileName);
+
+            File::delete(public_path($record->thumbnail_path));
+
+            $data['thumbnail_path'] = $destinationPath . $fileName;
+        }
+
         if ($request->file('image_file')) {
             $file = $request->file('image_file');
             $destinationPath = 'uploads/meditate/';
@@ -142,6 +159,7 @@ class MeditateController extends Controller
     public function destroy($id)
     {
         $obj = Meditate::find($id);
+        File::delete(public_path($obj->thumbnail_path));
         File::delete(public_path($obj->image_path));
         File::delete(public_path($obj->audio_path));
         $obj->delete();

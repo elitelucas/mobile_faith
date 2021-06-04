@@ -27,7 +27,8 @@
                                     <th>No</th>
                                     <th>Title(English)</th>
                                     <th>Status</th>
-                                    <th>Image</th>
+                                    <th>Thumbnail Image</th>
+                                    <th>Background Image</th>
                                     <th>Audio</th>
                                     <th>Date</th>
                                     <th>Edit</th>
@@ -47,6 +48,7 @@
                                                         class="bx bx-lock-open"></i></span>
                                             @endif
                                         </td>
+                                        <td><img src="{{ asset($record->thumbnail_path) }}" alt="" height="50"></td>
                                         <td><img src="{{ asset($record->image_path) }}" alt="" height="50"></td>
                                         <td><audio controls>
                                                 <source src="{{ asset($record->audio_path) }}" type="audio/mpeg">

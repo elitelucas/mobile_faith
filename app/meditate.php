@@ -10,7 +10,7 @@ class Meditate extends Model
     use HasFactory;
 
     protected $appends = [
-        'image_full_path', 'audio_full_path'
+        'thumbnail_full_path', 'image_full_path', 'audio_full_path'
     ];
 
     protected $casts = [
@@ -19,12 +19,17 @@ class Meditate extends Model
     ];
 
     protected $fillable = [
-        'title', 'image_path', 'audio_path',  'locked'
+        'title', 'thumbnail_path', 'image_path', 'audio_path',  'locked'
     ];
 
     public function getImageFullPathAttribute()
     {
         return asset($this->image_path);
+    }
+
+    public function getThumbnailFullPathAttribute()
+    {
+        return asset($this->thumbnail_path);
     }
 
     public function getAudioFullPathAttribute()

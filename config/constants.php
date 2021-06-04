@@ -30,6 +30,7 @@ return [
         ["code" => "TRK", "name" => "Turkish"],
         ["code" => "UKR", "name" => "Ukrainian"],
         ["code" => "VIE", "name" => "Vietnamese"],
+        ["code" => "TGL", "name" => "Filipino"],
     ],
     'bible_languages' => [
         'Danish',

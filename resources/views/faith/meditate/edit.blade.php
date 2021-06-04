@@ -37,7 +37,11 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="formrow-firstname-input">Image File(Upload again only when want to update)</label>
+                            <label for="formrow-firstname-input">Thumbnail Image(Upload again only when want to update)</label>
+                            <input type="file" name="thumbnail_file" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="formrow-firstname-input">Background Image(Upload again only when want to update)</label>
                             <input type="file" name="image_file" accept="image/*">
                         </div>
                         <div class="form-group">

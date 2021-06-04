@@ -31,7 +31,11 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="formrow-firstname-input">Image File</label>
+                            <label for="formrow-firstname-input">Thumbnail Image</label>
+                            <input type="file" name="thumbnail_file" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="formrow-firstname-input">Background Image</label>
                             <input type="file" name="image_file" accept="image/*" required>
                         </div>
                         <div class="form-group">
