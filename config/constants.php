@@ -2,8 +2,8 @@
 
 return [
     'languages' => [
-        ["code" => "CHN", "name" => "Chinese (Simplified)"],
-        ["code" => "YUH", "name" => "Chinese (Traditional)"],
+        ["code" => "CHN", "name" => "Chinese Simplified"],
+        ["code" => "YUH", "name" => "Chinese Traditional"],
         ["code" => "CZC", "name" => "Czech"],
         ["code" => "DAN", "name" => "Danish"],
         ["code" => "NLD", "name" => "Dutch"],
