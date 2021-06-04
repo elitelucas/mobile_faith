@@ -7,7 +7,8 @@ return [
         ["code" => "CZC", "name" => "Czech"],
         ["code" => "DAN", "name" => "Danish"],
         ["code" => "NLD", "name" => "Dutch"],
-        ["code" => "ENG", "name" => "English"],
+        ["code" => "ENG", "name" => "English"],        
+        ["code" => "TGL", "name" => "Filipino"],
         ["code" => "FIN", "name" => "Finnish"],
         ["code" => "FRN", "name" => "French"],
         ["code" => "GER", "name" => "German"],
@@ -30,7 +31,6 @@ return [
         ["code" => "TRK", "name" => "Turkish"],
         ["code" => "UKR", "name" => "Ukrainian"],
         ["code" => "VIE", "name" => "Vietnamese"],
-        ["code" => "TGL", "name" => "Filipino"],
     ],
     'bible_languages' => [
         'Danish',
