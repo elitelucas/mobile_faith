@@ -27,7 +27,6 @@ return [
         ["code" => "RUS", "name" => "Russian"],
         ["code" => "SPN", "name" => "Spanish"],
         ["code" => "SWE", "name" => "Swedish"],
-        ["code" => "THA", "name" => "Thai"],
         ["code" => "TRK", "name" => "Turkish"],
         ["code" => "UKR", "name" => "Ukrainian"],
         ["code" => "VIE", "name" => "Vietnamese"],
