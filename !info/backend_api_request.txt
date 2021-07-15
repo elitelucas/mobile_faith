@@ -1,0 +1,226 @@
+Project name : faithspace
+Language : laravel
+Template: materialize
+
+main features: 
+- firebase push notification from admin panel
+- send email to reset password(mobile user)
+
+Table : user, pray, following 
+1. users
+id: int, auto increase
+name : varchar(64)
+email : varchar(64)
+password : varchar(128)
+deviceToken : varchar (256)
+
+fbID : varchar(64)
+googleID : varchar(64)
+appleID : varchar(64)
+
+prayTime : varchar (32)
+enablePush >> boolean default value : true
+enableEmail >> boolean default value : true
+
+bibleLanguageCode: varchar(8) default value : ENG
+bibleLanguageName: varchar(64) default value : English
+
+bibleVersionCode: varchar(8) 
+bibleVersionName: varchar(64)
+
+religionID: int
+
+created_at : auto created by laravel?
+
+
+//New field for payment
+paid : boolean >>> active if user paid and valid, inactive if user doesn't pay anything or payment has expired
+default value : false
+You can get payment info from revenuecat every day. Check cronjob 
+
+
+2. pray
+- id: int, auto increase
+- user_id, : int
+
+- title : varchar (64)
+- description : varchar(310)
+- religion_id : int
+
+- created_at
+
+3. following
+- id
+- pray_id
+- user_id
+
+- created_at : auto created by laravel?
+
+
+
+5. invites
+- id
+- sender_id
+- receiver_id
+- pray_time : varchar(64) 
+
+
+//////New field
+- invitor_id : user id who send "invite_pray" request
+- state : varchar(20) default value : new
+values : new, active, decline
+
+
+6. meditate (administrator will add / edit / delete meditate data from admin panel manually.
+- id
+- title
+- description
+- image_path
+- audio_path
+
+7. background (administrator will add / edit / delete meditate data from admin panel manually.
+- id
+- path
+
+
+8. favorite_verse
+- id
+- user_id
+- text : text
+- reference : varchar(256)
+
+
+
+Backend api
+1. user_login
+parameter
+- email
+- password
+- deviceToken
+
+2. reset_password
+parameter
+- email
+
+3. user_signup
+- name
+- email
+- password
+- deviceToken
+
+4. update_profile
+- id
+
+key1 : value1,
+key2 : value2, 
+
+5. facebook_login
+//if user exist, send me user info. If not, please add new user and then send me user info
+- fbID
+- name
+- email
+- deviceToken
+
+6. google_login
+//if user exist, send me user info. If not, please add new user and then send me user info
+googleID
+
+7. apple_login
+//if user exist, send me user info. If not, please add new user and then send me user info
+appleID
+
+8. add_pray
+- user_id
+- title
+- description
+- religion_id
+
+9. follow_pray
+- pray_id
+- user_id
+
+if exist, remove from db. if not, add follower. it means follow/unfollow 
+
+
+10. get_pray
+- user_id
+- type : all, me
+
+
+return pray list
+[{user: {id: 3, name: "john"}, title: "", description: "", followers: [user_id array], created_at:"yyyy-MM-ddTHH:mm:ss+zzz"}]
+
+
+11. invite_friend
+- sender_id
+- receiver_id
+
+12. invite_pray
+- invite_id
+- pray_time
+
+/////New field
+- user_id >>> it should be invitor_id
+
+- title
+- message
+
+// we need to send notification to his friend.
+Please use title and message from api
+
+13. get_invite
+- user_id
+
+//we have friends table and invites table
+Using friends table, if there is sender and receiver in invites table together, it means "joined". if not, we need to show "invite to pray" 
+
+
+14. get_meditate
+- user_id
+random order limit : 20
+
+15. get_background
+- user_id
+
+response ::: background images (random order, counts: 10)
+
+16. send_notification
+- sender_id
+- receiver_id
+- title
+- description
+
+17. add_favorite_verse
+- user_id
+- text
+- reference
+
+18. delete_favorite_verse
+- verse_id
+- user_id
+
+19. get_favorite_verse
+- user_id
+
+when you send favorite_verse list, every verse need one background(random image path)
+for example, {result: true, data: [{id:2, text: "aaa", reference: "bbb", path:"http://.../background.jpg"}, ]}
+
+20. make_payment
+- user_id
+
+update user's paid as true
+return type : user info
+
+21. get_one_invite
+- user_id
+
+send me only one data : if (user_id != invitor_id) && (state == "new")
+example : {result: true, data: {id:5, pray_time:"2021-04-05 11:25:30zzz": user:{id:3, name:"Father Andolini"}}}
+
+22. update_invite
+- invite_id
+- user_id
+- state : active or decline
+
+///////////// subscription /////////
+https://docs.revenuecat.com/reference
